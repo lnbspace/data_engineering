@@ -218,4 +218,79 @@ export home=/hadoop3
 </configuration>
 ```
 
+## ONly Namenode machine 
+
+```
+[root@namenode hadoop]# hdfs  namenode  -format 
+WARNING: /hadoop3/logs does not exist. Creating.
+2021-07-03 02:46:45,963 INFO namenode.NameNode: STARTUP_MSG: 
+/************************************************************
+STARTUP_MSG: Starting NameNode
+STARTUP_MSG:   host = namenode/192.168.200.100
+STARTUP_MSG:   args = [-format]
+STARTUP_MSG:   version = 3.3.1
+STARTUP_MSG:   classpath = /hadoop3/et
+
+```
+
+### starting namenode 
+
+```
+[root@namenode hadoop]# hdfs  --daemon  start namenode 
+[root@namenode hadoop]# jps
+502 NameNode
+572 Jps
+
+```
+
+### starting datanode 
+
+```
+[root@datanode1 hadoop]# hdfs  --daemon  start  datanode
+WARNING: /hadoop3/logs does not exist. Creating.
+[root@datanode1 hadoop]# jps
+170 DataNode
+238 Jps
+[root@datanode1 hadoop]# exit
+fire@XIA:~/Desktop$ docker  exec -it  datanode2  bash 
+[root@datanode2 /]# 
+[root@datanode2 /]# hdfs  --daemon start  datanode
+WARNING: /hadoop3/logs does not exist. Creating.
+[root@datanode2 /]# jps
+145 DataNode
+213 Jps
+[root@datanode2 /]# exit
+fire@XIA:~/Desktop$ docker  exec -it  datanode1  bash 
+[root@datanode1 /]# jps
+170 DataNode
+269 Jps
+[root@datanode1 /]# 
+
+```
+
+
+### namenode can check status of datanode
+
+```
+[root@namenode hadoop]# hdfs dfsadmin -report  
+Configured Capacity: 468414390272 (436.24 GB)
+Present Capacity: 142297047040 (132.52 GB)
+DFS Remaining: 142296997888 (132.52 GB)
+DFS Used: 49152 (48 KB)
+DFS Used%: 0.00%
+Replicated Blocks:
+	Under replicated blocks: 0
+	Blocks with corrupt replicas: 0
+	Missing blocks: 0
+	Missing blocks (with replication factor 1): 0
+	Low redundancy blocks with highest priority to recover: 0
+	Pending deletion blocks: 0
+Erasure Coded Block Groups: 
+	Low redundancy block groups: 0
+	Block groups with corrupt internal blocks: 0
+	Missing block groups: 0
+	Low redundancy blocks with highest priority to recover: 0
+	Pending deletion blocks: 0
+
+```
 
