@@ -75,4 +75,10 @@ ccdbb80308cc: Mounted
 ```
 docker pull dockerashu/spark:v1
 ```
+### creating first container of spark 
+
+```
+docker run -itd --name spark_master --hostname spark_master --network myhadoop_br --ip 192.168.200.230 --restart always  dockerashu/spark:v1  
+
+```
 
