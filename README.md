@@ -44,3 +44,35 @@ export PYSPARK_PYTHON=/usr/bin/python3
 ```
  docker  commit  -m  "spark common image"   spark_common   spark:v1 
 ```
+
+
+## If you don't wanna setup your common image then..
+
+### PLZ use mine 
+
+## uploading image on docker hUB --- that is image registry 
+
+```
+fire@XIA:~$ docker  tag   spark:v1   dockerashu/spark:v1 
+fire@XIA:~$ docker login -u  dockerashu 
+Password: 
+WARNING! Your password will be stored unencrypted in /home/fire/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+fire@XIA:~$ docker push dockerashu/spark:v1 
+The push refers to repository [docker.io/dockerashu/spark]
+482aeb38981e: Pushing  313.5MB/1.13GB
+2f140462f3bc: Mounted from library/ubuntu 
+63c99163f472: Mounted from library/ubuntu 
+ccdbb80308cc: Mounted
+
+```
+
+## whosoever wanna use that just chill
+
+```
+docker pull dockerashu/spark:v1
+```
+
