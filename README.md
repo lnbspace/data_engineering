@@ -10,7 +10,7 @@
 
 ## apache RDD methods 
 
-<img src-"rdd.png">
+<img src="rdd.png">
 
 ## reading data from a text file 
 
