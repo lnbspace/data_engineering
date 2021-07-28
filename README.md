@@ -12,3 +12,11 @@
 
 [URL](https://github.com/redashu/k8s)
 
+## to deploy any docker image in k8s 
+
+<img src="d.png">
+
+## container. vs. pod 
+
+<img src="pod.png">
+
