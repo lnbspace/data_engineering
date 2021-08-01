@@ -842,4 +842,73 @@ mysql>
 
 ```
 
+## Docker compose 
+
+<img src="compose.png">
+
+### compose example
+
+```
+fire@XIA:~/compsoe/example1$ cat  compose.yaml 
+version: '3.8'
+services:
+ ashuapp1:
+    image: alpine 
+    container_name: ashubv1 
+    command: ping localhost
+ ashuapp2:
+    image: alpine 
+    container_name: ashubv21 
+    command: ping fb.com
+ ashuapp3:
+    image: ashuimg:alv2
+    build:
+     context: .
+     dockerfile: a.dockerfile 
+    container_name: ashubv31 
+    
+```
+
+### scaling update 
+
+```
+2007  kubectl   create  deployment  ashuwebapp --image=dockerashu/nginxapp:v1
+ 2008  kubectl   create  deployment  ashuwebapp1 --image=dockerashu/nginxapp:v1 --dry-run=client -o yaml 
+ 2009  kubectl   get  deploy
+ 2010  kubectl   get  pod 
+ 2011  kubectl   delete  pod  ashuwebapp-8466f8bfd9-srfw4 
+ 2012  kubectl  get  po 
+ 2013  ls
+ 2014  history 
+fire@XIA:~$ kubectl get  po 
+NAME                          READY   STATUS    RESTARTS   AGE
+ashuwebapp-8466f8bfd9-db97j   1/1     Running   0          67s
+fire@XIA:~$ kubectl   get  deploy 
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+ashuwebapp   1/1     1            1           2m13s
+fire@XIA:~$ kubectl   scale deploy  ashuwebapp  --replicas=5
+deployment.apps/ashuwebapp scaled
+fire@XIA:~$ kubectl   get  deploy 
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+ashuwebapp   1/5     5            1           2m35s
+fire@XIA:~$ kubectl   get  deploy 
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+ashuwebapp   3/5     5            3           2m39s
+fire@XIA:~$ kubectl   get  deploy 
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+ashuwebapp   5/5     5            5           2m42s
+fire@XIA:~$ kubectl  get  po 
+NAME                          READY   STATUS    RESTARTS   AGE
+ashuwebapp-8466f8bfd9-db97j   1/1     Running   0          104s
+ashuwebapp-8466f8bfd9-hxhzd   1/1     Running   0          12s
+ashuwebapp-8466f8bfd9-jwfbc   1/1     Running   0          12s
+ashuwebapp-8466f8bfd9-z9vkk   1/1     Running   0          12s
+ashuwebapp-8466f8bfd9-zt756   1/1     Running   0          12s
+
+```
+
+## CI CD 
+
+<img src="cicd.png">
+
 
