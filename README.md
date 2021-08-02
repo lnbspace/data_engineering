@@ -911,4 +911,19 @@ ashuwebapp-8466f8bfd9-zt756   1/1     Running   0          12s
 
 <img src="cicd.png">
 
+### Installing jenkins 
 
+```
+ 1  sudo wget -O /etc/yum.repos.d/jenkins.repo     https://pkg.jenkins.io/redhat-stable/jenkins.repo
+    2  sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+    
+ sudo yum install jenkins java-1.8.0-openjdk.x86_64 java-1.8.0-openjdk-devel.x86_64 
+ 
+  sudo yum install jenkins 
+  
+  17  sudo systemctl start  jenkins 
+   18  sudo systemctl status  jenkins 
+   
+ ```
+ 
+ 
